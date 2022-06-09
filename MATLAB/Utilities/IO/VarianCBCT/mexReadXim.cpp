@@ -80,11 +80,12 @@ void mexFunction(
 	/******* Kernel Function *********/
     cReadXim(filename, para, frame);
 
-	/**** KVSourceRtn is the only parameter-of-interest to return ****/
+	/**** Return KVSourceRtn ****/
     // KVSourceRtn = GantryRtn + 90 deg;
 	double KVSourceRtn = para->GantryRtn + 90;
 	plhs[1] = mxCreateDoubleScalar(KVSourceRtn);
-    
+
+	/**** Return NormChamberReading ****/    
     double NormChamberReading = para->KVNormChamber * 1.0;
     plhs[2] = mxCreateDoubleScalar(NormChamberReading);
 
