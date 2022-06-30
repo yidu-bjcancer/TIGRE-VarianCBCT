@@ -96,7 +96,7 @@ addParameter(p,'sc', true);
 % BH performance is very lame for unclear reason
 addParameter(p,'bh', false);
 
-addParameters(p,'gpuids',GpuIds())
+addParameter(p,'gpuids',GpuIds())
 
 %execute
 parse(p,varargin{:});

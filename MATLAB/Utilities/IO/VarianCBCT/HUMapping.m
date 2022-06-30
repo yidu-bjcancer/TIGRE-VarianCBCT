@@ -1,12 +1,14 @@
 function HU3D = HUMapping(img3D, Protocol)
 % Pixel value to HU value Mapping
+% Note: the Pixel2HU calibration table is for reference only, and users are
+% highly recommended to make their own calibration table
 % Method: using CATPhan 604 calibration data
 % Input:
 %       img3D: reconstructed image matrix in pixel value
 %       Protocol: CBCT scan protocol
 % Output:
 %       HU3D: image matrix in CT HU value
-% Date: 2021-09-03
+% Date: 2022-06-09
 % Author: Yi Du, yi.du@hotmail.com
 
 HU3D = zeros(numel(img3D), 1);
