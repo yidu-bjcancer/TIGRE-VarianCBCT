@@ -37,7 +37,7 @@ for ii = 1:proj_no
     if(~mod(ii,50))
         fprintf("Loading: %d / %d \n", ii, proj_no);
     end
-	[page, rtn] = mexReadXim(ximfilename);
+	[page, rtn, chamber] = mexReadXim(ximfilename);
 	if(~isempty(page))
         % load first page
         if(count==1)
@@ -45,7 +45,8 @@ for ii = 1:proj_no
     		angles(count) = rtn;
         	proj(:,:,count) = rot90(single(page), -1);
             
-            airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+            % airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+            airnorm(count) = single(chamber);
             count = count + 1;
         else
             % proj info
@@ -56,7 +57,8 @@ for ii = 1:proj_no
                 if(abs(rtn-angles(end))>thd)
                     angles(count) = rtn;
                 	proj(:,:,count) = rot90(single(page), -1);
-                    airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+                    % airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+                    airnorm(count) = single(chamber);
                     count = count + 1;
                 else
                     continue;
@@ -64,7 +66,8 @@ for ii = 1:proj_no
             else
                 angles(count) = rtn;
             	proj(:,:,count) = rot90(single(page), -1);
-                airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+                % airnorm(count) = single(projinfo{count}.properties.KVNormChamber);
+                airnorm(count) = single(chamber);
                 count = count + 1;
             end
         end

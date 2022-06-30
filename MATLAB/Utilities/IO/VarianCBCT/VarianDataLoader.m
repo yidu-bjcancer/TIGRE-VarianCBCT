@@ -17,7 +17,7 @@ function [proj_lg, geo, angles] = VarianDataLoader(datafolder, varargin)
 [tag_ACDC, tag_DPS, tag_SC, tag_BH, gpuids] = parse_inputs(varargin{:});
 
 %% GPU initialization
-reset(gpuDevice(gpuids.devices(0)+1));
+reset(gpuDevice(gpuids.devices(1)+1));
 
 %% Load geometry
 [geo, ScanXML] = GeometryFromXML(datafolder);
@@ -50,7 +50,7 @@ disp('Loading Blk: ')
 % Detector point scatter correction
 if(tag_DPS)
     disp('Blk DPS: ')
-    Blk = DetectorPointScatterCorrection(Blk, geo, ScCalib);
+    Blk = DetectorPointScatterCorrection(Blk, geo, ScCalib, gpuids);
 end
 %% Scatter Correction
 if(tag_SC)

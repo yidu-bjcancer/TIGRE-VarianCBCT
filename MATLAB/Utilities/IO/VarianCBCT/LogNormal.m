@@ -39,7 +39,8 @@ end
 toc
 %}
 %% TB version: GPU
-gpuDevice(gpuids.devices(0)+1);
+reset(gpuDevice(gpuids.devices(1)+1));
+
 gproj = gpuArray(single(proj));
 gBlk = gpuArray(Blk);
 % Version = 2.5
@@ -72,6 +73,6 @@ end
 
 proj = gather(gproj);
 % GPU clear
-reset(gpuDevice(gpuids.devices(0)+1));
+reset(gpuDevice(gpuids.devices(1)+1));
 
 end

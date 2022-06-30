@@ -74,6 +74,7 @@ void mexFunction(
     {
     	plhs[1] = mxCreateDoubleScalar(10000);
     	mexPrintf("%s is an empty file\n", filename);
+        plhs[2] = mxCreateDoubleScalar(10000);
         return;
     }
         

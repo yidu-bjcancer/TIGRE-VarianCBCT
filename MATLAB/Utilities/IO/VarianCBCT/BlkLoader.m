@@ -44,10 +44,11 @@ end
 %% Load Blk and AirNorm for TB2.5
 if(Version == 2.0)
     filename = fullfile(blkfilestr.folder, blkfilestr.name);
-    tmp = mexReadXim(filename);
+    [tmp, rtn, chamber] = mexReadXim(filename);
     Blk = rot90(single(tmp), -1);
-    tmp = ReadXim(filename, 0);
-    BlkAirNorm = single(tmp.properties.KVNormChamber);
+    % tmp = ReadXim(filename, 0);
+    % BlkAirNorm = single(tmp.properties.KVNormChamber);
+    BlkAirNorm = single(chamber); 
     Sec = [];
     return;
 end
@@ -56,12 +57,13 @@ end
 if(Version == 2.7)
     for ii = 1:length(blkfilestr)
         filename = fullfile(blkfilestr(ii).folder, blkfilestr(ii).name);
-        tmp = mexReadXim(filename);
+        [tmp, rtn, chamber] = mexReadXim(filename);
         Blk(:,:,ii) = rot90(single(tmp), -1);
-        tmp = ReadXim(filename, 0);
-        BlkAirNorm(ii) = single(tmp.properties.KVNormChamber);
+        % tmp = ReadXim(filename, 0);
+        % BlkAirNorm(ii) = single(tmp.properties.KVNormChamber);
+        BlkAirNorm(ii) = single(chamber); 
         % GantryRtn
-        Sec(ii) = single(tmp.properties.GantryRtn);
+        Sec(ii) = single(rtn);
     end
 end
 

@@ -70,7 +70,7 @@ hd = CoverSPR/sum(hd(:)) .* hd;
 
 %% GPU based
 % reset(gpuDevice(1));
-reset(gpuDevice(gpuids.devices(0)+1));
+reset(gpuDevice(gpuids.devices(1)+1));
 gproj = gpuArray(single(proj));
 
 %% 2D Convolution with downsampling and upsampling
@@ -100,7 +100,7 @@ end
 
 proj = single(gather(gproj));
 % Reset GPU
-reset(gpuDevice(gpuids.devices(0)+1));
+reset(gpuDevice(gpuids.devices(1)+1));
 
 
 %% Cutoff for over-correction
