@@ -54,7 +54,7 @@ end
 
 %% GPU version: acceptable
 % GPU Reset
-g = gpuDevice(gpuids.devices(0)+1);
+g = gpuDevice(gpuids.devices(1)+1);
 reset(g);
 
 gprojlg = gpuArray(single(projlg));
